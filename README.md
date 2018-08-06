@@ -1,4 +1,4 @@
-# ches2
+# powny
 
 UCI compatible chess engine written in Pony.
 
