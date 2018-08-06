@@ -1,5 +1,5 @@
 all: 
-	ponyc ./src --output build --bin-name ches2
+	ponyc ./src --output build --bin-name powny
 
 run:
-	@./build/ches2
+	@./build/powny
