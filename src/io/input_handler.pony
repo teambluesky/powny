@@ -1,3 +1,5 @@
+use "package:../engine"
+
 class InputNotifier
   let _env: Env
   var _buf: Array[U8] iso
