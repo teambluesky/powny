@@ -2,23 +2,19 @@ use "package:../engine"
 
 class InputNotifier
   let _env: Env
-  var _buf: Array[U8] iso
   let _engine: Engine
 
   new create(env': Env, engine: Engine) =>
     _env = env'
-    _buf = recover iso Array[U8] end
     _engine = engine
 
   fun ref apply(data: Array[U8] iso) =>
-    for char in (consume data).values() do
-      if (char == '\n') or (char == 0x0A) then
-        let bufferOutIso = _buf = recover iso Array[U8] end
-        _engine(consume bufferOutIso)
-      else
-        _buf.push(char)
-      end
-    end
+    let buffer = recover String.from_iso_array(consume data) end
+
+    // Remove newline ('\n') character for simpler string comparison
+    buffer.delete(ISize.from[USize](buffer.size() - 1))
+
+    _engine(consume buffer)
 
   fun ref dispose() =>
     _env.out.print("disposed")

@@ -13,3 +13,9 @@ make
 ```
 make run
 ```
+
+# Testing
+```
+make tests
+make run-tests
+```

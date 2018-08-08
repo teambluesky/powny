@@ -1,24 +1,22 @@
 class Engine
-  let _out: OutStream
+  let _gui: OutStream
   let _logger: OutStream
 
-  new create(out: OutStream, logger: OutStream) =>
-    _out = out
+  new create(gui: OutStream, logger: OutStream) =>
+    _gui = gui
     _logger = logger
-    _logger.print("Engine started, waiting for commands ...")
 
-  fun ref apply(command': Array[U8] iso) =>
-    let command = String.from_array(consume command')
+  fun ref apply(command: String) =>
     _logger.print("Received command: " + command)
 
     if command == "uci" then
-      _out.print("id name Powny 0.1")
-      _out.print("id author Simu & Sandy")
-      _out.print("uciok")
+      _gui.print("id name Powny 0.1")
+      _gui.print("id author Simu & Sandy")
+      _gui.print("uciok")
     elseif command == "isready" then
-      _out.print("readyok")
+      _gui.print("readyok")
     elseif command.contains("go") then
-      _out.print("bestmove e7e5")
+      _gui.print("bestmove e7e5")
     else
       _logger.print("Unhandled command: " + command)
     end
