@@ -1,4 +1,4 @@
-# ches2
+# powny
 
 UCI compatible chess engine written in Pony.
 
@@ -11,5 +11,11 @@ make
 # Run
 
 ```
-./build/ches2
+make run
+```
+
+# Testing
+```
+make tests
+make run-tests
 ```
